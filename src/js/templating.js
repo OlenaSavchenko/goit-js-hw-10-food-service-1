@@ -1,4 +1,4 @@
-import itemsTemplate from '../temlates/templates.hbs';
+import itemsTemplate from '../templates/templates.hbs';
 import menu from '../menu.json';
 const menuRef = document.querySelector('.js-menu');
 
