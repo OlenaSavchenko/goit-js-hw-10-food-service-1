@@ -4,6 +4,10 @@ class Theme {
   classList = document.body.classList;
   control = document.querySelector('#theme-switch-control');
 
+  setTheme() {
+    this.classList.add(this.LIGHT);
+  }
+
   addListener() {
     this.control.addEventListener('change', this.onControlClick.bind(this));
   }
@@ -12,7 +16,7 @@ class Theme {
     if (savedTheme) {
       document.body.className = savedTheme;
     }
-    if (document.body.className.indexOf(this.DARK) > -1) {
+    if (document.body.className.includes(this.DARK)) {
       this.control.setAttribute('checked', 'true');
     }
   }
@@ -21,7 +25,7 @@ class Theme {
   }
 
   onControlClick() {
-    if (document.body.className.indexOf(this.LIGHT) > -1) {
+    if (document.body.className.includes(this.LIGHT)) {
       this.classList.remove(this.LIGHT) & this.classList.add(this.DARK);
     } else {
       this.classList.remove(this.DARK) & this.classList.add(this.LIGHT);
@@ -30,6 +34,6 @@ class Theme {
   }
 }
 const themeClass = new Theme();
-
+themeClass.setTheme();
 themeClass.addListener();
 themeClass.saveTheme();
